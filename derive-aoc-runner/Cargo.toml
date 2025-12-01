@@ -1,0 +1,12 @@
+[package]
+name = "derive-aoc-runner"
+version = "0.1.0"
+edition = "2021"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0.21"
+syn = "1.0.105"
+aoc-runner = { path = "../aoc-runner" }
