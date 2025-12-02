@@ -1,7 +1,6 @@
-//! # Day 01
+//! # Day 01 Secret Entrance
 
 use aoc_runner::Day;
-use num::Integer;
 
 #[derive(Default, Clone)]
 pub struct Day01 {
@@ -9,26 +8,20 @@ pub struct Day01 {
 }
 
 impl Day for Day01 {
-    type Result1 = u32;
-    type Result2 = u32;
+    type Result1 = u16;
+    type Result2 = u16;
 
     fn parse(&mut self, input: &str) {
-        self.instructions = input.lines().into_iter()
+        self.instructions = input
+            .lines()
+            .into_iter()
             .filter(|it| !it.is_empty())
             .map(|line| {
                 let (dir, num) = line.split_at(1);
                 let int: i16 = num.parse().unwrap();
-                if dir == "L" {
-                    -int
-                } else {
-                    int
-                }
-            })
-            .inspect(|it| {
-                assert_ne!(it.abs(), 0i16);
+                if dir == "L" { -int } else { int }
             })
             .collect();
-
     }
 
     fn part1(&mut self) -> Self::Result1 {
@@ -37,7 +30,7 @@ impl Day for Day01 {
         for i in self.instructions.iter() {
             start += *i as i16;
             start %= 100;
-            count += (start == 0) as u32;
+            count += (start == 0) as Self::Result2;
         }
 
         count
@@ -45,15 +38,15 @@ impl Day for Day01 {
 
     fn part2(&mut self) -> Self::Result2 {
         let mut num = 50i16;
-        let mut count: Self::Result2 = 0;
+        let mut count = 0;
         for i in self.instructions.iter() {
             let new = num + *i as i16;
             if new <= 0 {
                 count += if num == 0 { 0 } else { 1 };
-                count += (new / 100).abs() as u32;
+                count += (new / 100).abs() as Self::Result2;
             }
             if new >= 100 {
-                count += (new / 100).abs() as u32
+                count += (new / 100).abs() as Self::Result2;
             }
             num = new.rem_euclid(100);
         }
@@ -63,10 +56,10 @@ impl Day for Day01 {
 
 #[cfg(test)]
 mod test {
-    use indoc::indoc;
     use super::*;
+    use indoc::indoc;
 
-    const INPUT: &str = indoc!{"
+    const INPUT: &str = indoc! {"
         L68
         L30
         R48

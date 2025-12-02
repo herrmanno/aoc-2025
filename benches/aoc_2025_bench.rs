@@ -51,7 +51,9 @@ macro_rules! bench_day {
 }
 
 bench_day!("01", day_01, aoc2025::days::day01::Day01);
+bench_day!("02", day_02, aoc2025::days::day02::Day02);
 
 criterion::criterion_main!(
     day_01::bench,
+    day_02::bench,
 );
