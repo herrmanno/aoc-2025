@@ -52,8 +52,22 @@ macro_rules! bench_day {
 
 bench_day!("01", day_01, aoc2025::days::day01::Day01);
 bench_day!("02", day_02, aoc2025::days::day02::Day02);
+bench_day!("03", day_03, aoc2025::days::day03::Day03);
+bench_day!("04", day_04, aoc2025::days::day04::Day04);
+bench_day!("05", day_05, aoc2025::days::day05::Day05);
+bench_day!("06", day_06, aoc2025::days::day06::Day06);
+bench_day!("07", day_07, aoc2025::days::day07::Day07);
+bench_day!("08", day_08, aoc2025::days::day08::Day08);
+bench_day!("09", day_09, aoc2025::days::day09::Day09);
 
 criterion::criterion_main!(
     day_01::bench,
     day_02::bench,
+    day_03::bench,
+    day_04::bench,
+    day_05::bench,
+    day_06::bench,
+    day_07::bench,
+    day_08::bench,
+    day_09::bench,
 );
