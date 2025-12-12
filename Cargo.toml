@@ -17,10 +17,10 @@ itertools = "0.13.0"
 bit-set = "0.8.0"
 cached = "0.54.0"
 
-[profile.release]
-lto = true
-strip = true
+# [profile.release]
+# lto = true
+# strip = true
 
-[[bench]]
-name = "aoc_2025_bench"
-harness = false
+# [[bench]]
+# name = "aoc_2025_bench"
+# harness = false
