@@ -4,7 +4,6 @@ use aoc_runner::Day;
 
 #[derive(Default, Clone)]
 pub struct Day12 {
-    // shapes: Vec<Shape>,
     problems: Vec<Problem>,
 }
 
@@ -13,12 +12,7 @@ impl Day for Day12 {
     type Result2 = u32;
 
     fn parse(&mut self, input: &str) {
-        let parts = input.split("\n\n");
-        let len = parts.clone().count();
-        // self.shapes = parts.clone().take(len - 1).map(|s| {
-        //     Shape::from(&s[3..])
-        // }).collect();
-        self.problems = parts.last().unwrap().lines().map(Problem::from).collect();
+        self.problems = input.split("\n\n").last().unwrap().lines().map(Problem::from).collect();
     }
 
     fn part1(&mut self) -> Self::Result1 {
@@ -34,25 +28,6 @@ impl Day for Day12 {
         0
     }
 }
-
-
-// #[derive(Default, Clone)]
-// struct Shape {
-//     width: usize,
-//     height: usize,
-//     points: usize,
-// }
-
-// impl From<&str> for Shape {
-//     fn from(value: &str) -> Self {
-//         let points = value.lines().skip(1).fold(0, |acc, line| acc + line.chars().filter(|it| *it == '#').count());
-//         Self {
-//             width: 9,
-//             height: 9,
-//             points
-//         }
-//     }
-// }
 
 #[derive(Default, Clone)]
 struct Problem {
